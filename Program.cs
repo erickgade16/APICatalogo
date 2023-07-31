@@ -2,6 +2,8 @@ using APICatalogo.Context;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 
+
+
 namespace APICatalogo
 {
     public class Program
@@ -14,10 +16,10 @@ namespace APICatalogo
 
             builder.Services.AddControllers();
 
-            var mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
+            string MySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<AppDbContext>(options =>
-            options.UseMySql(mySqlConnection,
-            ServerVersion.AutoDetect(mySqlConnection))); 
+            options.UseMySql(MySqlConnection,
+            ServerVersion.AutoDetect(MySqlConnection))); 
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
